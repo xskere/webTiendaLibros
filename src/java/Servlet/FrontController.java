@@ -76,7 +76,7 @@ public class FrontController extends HttpServlet {
     
     private Class getCommandClass(HttpServletRequest request){
         Class result;
-        final String command = "frontController."+ (String) request.getParameter("command");
+        final String command = "Model."+ (String) request.getParameter("command");
         try {
             result = Class.forName(command);
         }

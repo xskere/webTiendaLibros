@@ -5,26 +5,23 @@
  */
 package Model;
 
-import java.util.Date;
 
 /**
  *
  * @author Entrar
  */
-public class Libro {
+public class Producto {
     private final String isbn;
     private final String title;
     private final int pageCount;
-    private final Date publishedDate;
     private final String thumbnail;
     private final double price;
     
-    public Libro(String isbn, String title, Date date,
+    public Producto(String isbn, String title,
             String url, int pageCount){
         this.isbn = isbn;
         this.title = title;
         this.pageCount = pageCount;
-        this.publishedDate = date;
         this.thumbnail = url;
         this.price = Math.random() * (57 - 9) + 9;
     }   
@@ -37,16 +34,17 @@ public class Libro {
         return pageCount;
     }
 
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
     public String getThumbnail() {
         return thumbnail;
     }
 
     public double getPrice() {
         return price;
+    }
+    
+    @Override
+    public String toString(){
+        return this.title;
     }
     
     
