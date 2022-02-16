@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-public class goToCart extends FrontCommand{
+public class deleteFromCart extends FrontCommand{
 
     @Override
     public void process() {
@@ -18,14 +18,23 @@ public class goToCart extends FrontCommand{
         if(cart == null){
             cart = new ArrayList<>();
         }
-        session.setAttribute("cart", cart);
+            
+        if(request.getParameter("book") != null){  
+            for (Producto producto : cart) {
+                if(producto.getIsbn().equals(request.getParameter("book"))){
+                    cart.remove(producto);
+                    break;
+                }
+            }
+            session.setAttribute("cart", cart);  
+        }
         
         try {
             forward("/cart.jsp");
         } catch (ServletException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

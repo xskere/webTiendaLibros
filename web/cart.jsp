@@ -14,13 +14,28 @@
         <title>This is your cart</title>
     </head>
     <body>
-        <div>This is your cart:</div>
-        <%
-            for (Producto book : (ArrayList<Producto>) request.getSession(true).getAttribute("cart")) { %>
-                    <%= book  %>
-                    <br>
-        <%  } %>
         
+        <div>This is your cart:</div>
+        <form action="FrontController">
+            <select name="book">
+                <%
+                for (Producto book : (ArrayList<Producto>) request.getSession(true).getAttribute("cart")) { %>
+                <%= new String("<option value=" + book.getIsbn() + ">" + book + "</option>") %>
+                <%  } %>
+                <input type="submit" value="Delete From Cart" name="Delete From Cart" />
+                <input type="hidden" value="deleteFromCart" name="command" />
+            </select>
+        </form>        
+        <br>
+        <form action="FrontController">
+            <input type="submit" value="Go To Checkout" name="Go To Checkout" />
+            <input type="hidden" value="buy" name="command" />
+        </form>
+        <br>
+        <form action="FrontController">
+            <input type="submit" value="Go To Main Page" name="Go To Main Page" />
+            <input type="hidden" value="goToMainPage" name="command" />
+        </form>
         
     </body>
 </html>

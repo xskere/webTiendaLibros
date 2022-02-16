@@ -5,16 +5,13 @@
 --%>
 
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Producto"%>
 <%@page import="Model.Catalogo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
     Catalogo.buildCatalog();
-    request.setAttribute("added", false);
-
-
-
-
 %>
 
 <html>
@@ -31,14 +28,14 @@
         </form>
         Aquí es para añadir al carrito
         <form action="FrontController">
-            <input type="submit" value="1" name="book" />
-            <input type="submit" value="2" name="book" />
+            <select name="book">
+            <%
+            for (Producto book : (ArrayList<Producto>) Catalogo.getCatalogo()) { %>
+            <%= new String("<option value=" + book.getIsbn() + ">" + book + "</option>") %>
+            <%  } %>
+        </select>
+            <input type="submit" value="Add To Cart" name="Add To Cart" />
             <input type="hidden" value="addToCart" name="command" />
         </form>
-        <% if ( request.getAttribute("added").equals("true") ) { %>
-            <% request.setAttribute("added", false); %>
-             <div>The item has been added to your cart.</div>
-         <%  }  %>
-        
     </body>
 </html>

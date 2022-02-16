@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Catalogo {
     private static ArrayList<Producto> catalogo;
 
-    public ArrayList<Producto> getCatalogo() {
+    public static ArrayList<Producto> getCatalogo() {
         return catalogo;
     }
     
@@ -40,5 +40,6 @@ public class Catalogo {
         return cat;
         
     }
+    
     
 }
