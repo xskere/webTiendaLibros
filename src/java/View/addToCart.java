@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package View;
 
+import Model.Catalogo;
+import Model.FrontCommand;
+import Model.Producto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;

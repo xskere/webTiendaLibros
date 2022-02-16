@@ -1,5 +1,6 @@
-package Model;
+package View;
 
+import Model.FrontCommand;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

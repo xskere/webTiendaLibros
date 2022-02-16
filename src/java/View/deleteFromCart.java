@@ -1,5 +1,7 @@
-package Model;
+package View;
 
+import Model.FrontCommand;
+import Model.Producto;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -32,9 +34,9 @@ public class deleteFromCart extends FrontCommand{
         try {
             forward("/cart.jsp");
         } catch (ServletException ex) {
-            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(deleteFromCart.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(deleteFromCart.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
