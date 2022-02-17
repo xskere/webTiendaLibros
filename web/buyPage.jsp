@@ -16,7 +16,7 @@
         <br>
         <form action="FrontController">
             <input type="submit" value="Go To Main Page" name="Go To Main Page" />
-            <input type="hidden" value="goToMainPage" name="command" />
+            <input type="hidden" value="GoToMainPage" name="command" />
         </form>
     </body>
 </html>

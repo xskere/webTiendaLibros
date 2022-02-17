@@ -1,14 +1,14 @@
-package View;
+package Control;
 
 import Model.Carrito;
-import Model.FrontCommand;
+import Control.FrontCommand;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
-public class goToCart extends FrontCommand{
+public class GoToCart extends FrontCommand{
 
     @Override
     public void process() {
@@ -26,9 +26,9 @@ public class goToCart extends FrontCommand{
         try {
             forward("/cart.jsp");
         } catch (ServletException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

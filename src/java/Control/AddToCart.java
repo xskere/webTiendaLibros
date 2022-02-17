@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package Control;
 
 import Model.Carrito;
 import Model.Catalogo;
-import Model.FrontCommand;
+import Control.FrontCommand;
 import Model.Producto;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Entrar
  */
-public class addToCart extends FrontCommand{
+public class AddToCart extends FrontCommand{
 
     @Override
     public void process() {
@@ -41,9 +41,9 @@ public class addToCart extends FrontCommand{
             request.setAttribute("added", true);
             forward("/mainPage.jsp");
         } catch (ServletException ex) {
-            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddToCart.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(addToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddToCart.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

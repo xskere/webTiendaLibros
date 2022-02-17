@@ -5,8 +5,6 @@
  */
 package Control;
 
-import Model.FrontCommand;
-import View.UnknownCommand;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -76,7 +74,7 @@ public class FrontController extends HttpServlet {
     
     private Class getCommandClass(HttpServletRequest request){
         Class result;
-        final String command = "View."+ (String) request.getParameter("command");
+        final String command = "Control."+ (String) request.getParameter("command");
         try {
             result = Class.forName(command);
         }

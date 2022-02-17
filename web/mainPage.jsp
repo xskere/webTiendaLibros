@@ -24,7 +24,7 @@
         Aquí es para ir al carrito
         <form action="FrontController">
             <input type="submit" value="Go to cart" name="Go to cart" />
-            <input type="hidden" value="goToCart" name="command" />
+            <input type="hidden" value="GoToCart" name="command" />
         </form>
         Aquí es para añadir al carrito
         <form action="FrontController">
@@ -35,7 +35,7 @@
             <%  } %>
         </select>
             <input type="submit" value="Add To Cart" name="Add To Cart" />
-            <input type="hidden" value="addToCart" name="command" />
+            <input type="hidden" value="AddToCart" name="command" />
         </form>
     </body>
 </html>

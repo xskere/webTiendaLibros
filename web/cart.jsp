@@ -24,18 +24,18 @@
                 <%= new String("<option value=" + book.getIsbn() + ">" + book + "</option>") %>
                 <%  } %>
                 <input type="submit" value="Delete From Cart" name="Delete From Cart" />
-                <input type="hidden" value="deleteFromCart" name="command" />
+                <input type="hidden" value="DeleteFromCart" name="command" />
             </select>
         </form>        
         <br>
         <form action="FrontController">
             <input type="submit" value="Go To Checkout" name="Go To Checkout" />
-            <input type="hidden" value="buy" name="command" />
+            <input type="hidden" value="GoToCheckout" name="command" />
         </form>
         <br>
         <form action="FrontController">
             <input type="submit" value="Go To Main Page" name="Go To Main Page" />
-            <input type="hidden" value="goToMainPage" name="command" />
+            <input type="hidden" value="GoToMainPage" name="command" />
         </form>
         
     </body>

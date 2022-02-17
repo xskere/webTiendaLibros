@@ -1,12 +1,12 @@
-package View;
+package Control;
 
-import Model.FrontCommand;
+import Control.FrontCommand;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 
-public class goToMainPage extends FrontCommand{
+public class GoToMainPage extends FrontCommand{
 
     @Override
     public void process() {
@@ -14,9 +14,9 @@ public class goToMainPage extends FrontCommand{
         try {
             forward("/mainPage.jsp");
         } catch (ServletException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(goToCart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
