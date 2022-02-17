@@ -4,6 +4,7 @@
     Author     : alero
 --%>
 
+<%@page import="Model.Carrito"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +20,7 @@
         <form action="FrontController">
             <select name="book">
                 <%
-                for (Producto book : (ArrayList<Producto>) request.getSession(true).getAttribute("cart")) { %>
+                for (Producto book : (ArrayList<Producto>) ((Carrito) request.getSession(true).getAttribute("cart")).getCarrito()) { %>
                 <%= new String("<option value=" + book.getIsbn() + ">" + book + "</option>") %>
                 <%  } %>
                 <input type="submit" value="Delete From Cart" name="Delete From Cart" />
