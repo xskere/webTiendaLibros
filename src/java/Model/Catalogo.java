@@ -5,7 +5,18 @@
  */
 package Model;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonStructure;
+import javax.json.JsonValue;
 
 /**
  *
@@ -13,7 +24,16 @@ import java.util.ArrayList;
  */
 public class Catalogo {
     private static ArrayList<Producto> catalogo;
-
+    
+    public Catalogo(String url){
+        try {
+            buildCatalog(url);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Catalogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     public static ArrayList<Producto> getCatalogo() {
         return catalogo;
     }
@@ -30,14 +50,19 @@ public class Catalogo {
         Catalogo.catalogo.add(lib);
     }
 
-    public static ArrayList<Producto> buildCatalog() {
+    private void buildCatalog(String url) throws FileNotFoundException {
         ArrayList<Producto> cat = new ArrayList<>();
-        
-        cat.add(new Producto("1", "testBook1", "urlEsta1", 23));
-        cat.add(new Producto("2", "testBook2", "urlEsta2", 24));
-        cat.add(new Producto("3", "testBook3", "urlEsta3", 25));
+        JsonReader reader;
+        reader = Json.createReader(new FileReader(url));
+        JsonArray jsoarr = reader.readArray();
+        for (JsonValue jsonValue : jsoarr) {
+            String title = ((JsonObject) jsonValue).getString("title");
+            String isbn = ((JsonObject) jsonValue).getString("isbn");
+            String thumbnailUrl = ((JsonObject) jsonValue).getString("thumbnailUrl");
+            int pageCount = ((JsonObject) jsonValue).getInt("pageCount");
+            cat.add(new Producto(isbn, title, thumbnailUrl, pageCount));
+        }
         Catalogo.catalogo = cat;
-        return cat;
         
     }
     

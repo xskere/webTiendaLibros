@@ -15,28 +15,28 @@
         <title>This is your cart</title>
     </head>
     <body>
-        
-        <div>This is your cart:</div>
-        <form action="FrontController">
-            <select name="book">
-                <%
-                for (Producto book : (ArrayList<Producto>) ((Carrito) request.getSession(true).getAttribute("cart")).getCarrito()) { %>
-                <%= new String("<option value=" + book.getIsbn() + ">" + book + "</option>") %>
-                <%  } %>
-                <input type="submit" value="Delete From Cart" name="Delete From Cart" />
-                <input type="hidden" value="DeleteFromCart" name="command" />
-            </select>
-        </form>        
-        <br>
+        <p>Pulse aquí para proceder a comprar los libros de su carrito.</p>
         <form action="FrontController">
             <input type="submit" value="Go To Checkout" name="Go To Checkout" />
             <input type="hidden" value="GoToCheckout" name="command" />
         </form>
-        <br>
+        <p>Pulse aquí para volver al catalogo.</p>
         <form action="FrontController">
             <input type="submit" value="Go To Main Page" name="Go To Main Page" />
             <input type="hidden" value="GoToMainPage" name="command" />
         </form>
-        
+        <p>Este es el contenido de su carrito:</p>
+        <%
+            for (Producto book : (ArrayList<Producto>) ((Carrito) request.getSession(true).getAttribute("cart")).getCarrito()) { %>
+                <form action="FrontController">
+                <%= new String("<img src=\""+book.getThumbnail()+"\"/>") %>
+                <%= new String("<figcaption>Titulo: "+book+" Precio: " + (int) book.getPrice() +" euros</figcaption>") %>
+
+                <%= new String("<input type=\"hidden\" value=\""+book.getIsbn()+"\" name=\"book\" />")%>
+                <input type="submit" value="Delete From Cart" name="Delete From Cart" />
+                <input type="hidden" value="DeleteFromCart" name="command" />
+                <p>--------------------------------------------------------</p>
+                </form>
+        <%}%>      
     </body>
 </html>

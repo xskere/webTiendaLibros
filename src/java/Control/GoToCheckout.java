@@ -20,6 +20,16 @@ public class GoToCheckout extends FrontCommand{
             cart = new Carrito();
         }
         
+        if(cart.getCarrito().isEmpty()){
+            try {
+                forward("/unknown.jsp");
+            } catch (ServletException ex) {
+                Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GoToCart.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         cart.emptyCarrito();
         
         session.setAttribute("cart", cart);

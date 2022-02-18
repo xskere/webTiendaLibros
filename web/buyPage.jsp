@@ -4,6 +4,9 @@
     Author     : alero
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Producto"%>
+<%@page import="Model.Carrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +15,10 @@
         <title>Chekout</title>
     </head>
     <body>
-        You have bought the books in your cart! Thank you for shopping!
-        <br>
+        <p>Acaba de realizar usted la compra de los libros en su carrito. Muchas gracias
+            por comprar con nosotros!</p>
+        <p>Le esperamos de vuelta.</p>
+        <p>Pulse aquí para volver a la página principal:</p>
         <form action="FrontController">
             <input type="submit" value="Go To Main Page" name="Go To Main Page" />
             <input type="hidden" value="GoToMainPage" name="command" />
