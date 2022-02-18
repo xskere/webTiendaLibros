@@ -8,14 +8,12 @@ package Model;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import javax.json.JsonStructure;
 import javax.json.JsonValue;
 
 /**
@@ -26,11 +24,9 @@ public class Catalogo {
     private static ArrayList<Producto> catalogo;
     
     public Catalogo(String url){
-        try {
+       
             buildCatalog(url);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Catalogo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
     }
     
@@ -50,17 +46,26 @@ public class Catalogo {
         Catalogo.catalogo.add(lib);
     }
 
-    private void buildCatalog(String url) throws FileNotFoundException {
+    private void buildCatalog(String url){
         ArrayList<Producto> cat = new ArrayList<>();
-        JsonReader reader;
-        reader = Json.createReader(new FileReader(url));
-        JsonArray jsoarr = reader.readArray();
-        for (JsonValue jsonValue : jsoarr) {
-            String title = ((JsonObject) jsonValue).getString("title");
-            String isbn = ((JsonObject) jsonValue).getString("isbn");
-            String thumbnailUrl = ((JsonObject) jsonValue).getString("thumbnailUrl");
-            int pageCount = ((JsonObject) jsonValue).getInt("pageCount");
-            cat.add(new Producto(isbn, title, thumbnailUrl, pageCount));
+        try {
+            JsonReader reader;
+            reader = Json.createReader(new FileReader(url));
+            JsonArray jsoarr = reader.readArray();
+            for (JsonValue jsonValue : jsoarr) {
+                String title = ((JsonObject) jsonValue).getString("title");
+                String isbn = ((JsonObject) jsonValue).getString("isbn");
+                String thumbnailUrl = ((JsonObject) jsonValue).getString("thumbnailUrl");
+                int pageCount = ((JsonObject) jsonValue).getInt("pageCount");
+                cat.add(new Producto(isbn, title, thumbnailUrl, pageCount));
+            }
+           
+        } catch (FileNotFoundException ex) {
+            cat.add(new Producto("1933988673", "Unlocking Android","https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg", 416));
+            cat.add(new Producto("1935182722", "Android in Action, Second Edition","https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg", 592));
+            cat.add(new Producto("1617290084", "Specification by Example","https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg", 0));
+            cat.add(new Producto("1933988746", "Flex 3 in Action","https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed.jpg", 576));
+            cat.add(new Producto("1935182420", "Flex 4 in Action","https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ahmed2.jpg", 600));
         }
         Catalogo.catalogo = cat;
         
